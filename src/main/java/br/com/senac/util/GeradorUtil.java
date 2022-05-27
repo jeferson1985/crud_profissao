@@ -93,4 +93,8 @@ public class GeradorUtil {
     public static void main(String[] args) {
         System.out.println("Cidade: " + gerarCidade());
     }
+    
+    public static String gerarNumeroCartao() {
+        return gerarNumero(4) + "/" + gerarNumero(4) + "/" + gerarNumero(4) + "/" + gerarNumero(4);
+    }
 }

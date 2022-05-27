@@ -1,6 +1,7 @@
 package br.com.senac.entidade;
 
 import java.io.Serializable;
+import java.util.List;
 import javax.persistence.*;
 
 /**
@@ -25,6 +26,17 @@ public class Cliente implements Serializable {
 
     @OneToOne(mappedBy = "cliente", cascade = CascadeType.ALL)// somente bidirecional anotacao indicando que classe endereco possui chave estrangeira
     private Endereco endereco;
+
+    @OneToMany(mappedBy = "cliente")
+    private List<Cartao> cartoes;
+
+    public List<Cartao> getCartoes() {
+        return cartoes;
+    }
+
+    public void setCartoes(List<Cartao> cartoes) {
+        this.cartoes = cartoes;
+    }
 
     public Cliente() {
     }
@@ -70,8 +82,6 @@ public class Cliente implements Serializable {
     public void setEndereco(Endereco endereco) {
         this.endereco = endereco;
     }
-    
-    
 
     @Override
     public int hashCode() {
